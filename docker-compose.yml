@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+    mysql:
+        build: mysql
+        ports:
+            - 3306
+        volumes:
+            - "./.data/db:/var/lib/mysql"
+
+    postfix:
+        build: postfix
+        ports:
+           - 25
+           - 110
+
+
+    dovecot:
+        build: dovecot
+        ports:
+           - 143
+           - 993
+           - 995
+           - 587
+
+    roundcubemail:
+        build: roundcubemail
+        ports:
+           - 80
+
+    spamassassin:
+        build: spamassassin   
+        ports:
+           - 783
